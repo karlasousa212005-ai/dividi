@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6d4aff">
+<title>DIVIDI — Dividir ficou mais fácil</title>
+<style>
+:root{--purple:#6d4aff;--purple2:#8a72ff;--ink:#202033;--muted:#77778b;--bg:#f6f5fb;--line:#eceaf3;--green:#159b70;--red:#df5d70;--white:#fff;--shadow:0 12px 35px rgba(39,31,80,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}
+.sidebar{background:#fff;border-right:1px solid var(--line);padding:27px 18px;display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 10px;font-size:23px;font-weight:850;letter-spacing:-1px}.brand-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#9c84ff);display:grid;place-items:center;color:#fff;font-weight:900}
+.nav-label{font-size:10px;color:#a09eaf;font-weight:800;letter-spacing:1.2px;padding:0 12px;margin-bottom:8px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#77778b;text-align:left;padding:12px;border-radius:12px;font-weight:650;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:#f0edff;color:var(--purple)}.nav .ico{width:20px;text-align:center;font-size:17px}
+.side-tip{margin-top:auto;background:#f4f1ff;border-radius:16px;padding:16px;font-size:12px;color:#69627e;line-height:1.55}.side-tip strong{display:block;color:#40366e;margin-bottom:5px;font-size:13px}
+main{padding:30px 38px 50px;max-width:1500px;width:100%;margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:27px;gap:15px}.eyebrow{font-size:12px;color:var(--muted);margin-bottom:5px}.topbar h1{font-size:26px;letter-spacing:-.7px;margin:0}.user{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#eee9ff;color:var(--purple);font-weight:800}
+.hero{background:linear-gradient(115deg,#6544ee,#8c70ff);border-radius:22px;color:white;padding:25px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 15px 30px rgba(109,74,255,.18);margin-bottom:22px}.hero h2{font-size:23px;margin:0 0 7px;letter-spacing:-.5px}.hero p{margin:0;color:#e8e2ff;font-size:13px;max-width:500px;line-height:1.5}.hero-art{font-size:58px;opacity:.95}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:23px}.stat{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:var(--shadow)}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;font-weight:650}.stat-icon{width:32px;height:32px;border-radius:10px;background:#f0edff;display:grid;place-items:center;color:var(--purple);font-size:16px}.stat strong{display:block;font-size:23px;margin-top:13px;letter-spacing:-.7px}.stat small{display:block;color:#9997a8;font-size:11px;margin-top:4px}
+.content-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:17px}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.panel h3{font-size:15px;margin:0}.sub{font-size:11px;color:var(--muted);margin-top:4px}.btn{border:0;border-radius:11px;padding:10px 14px;background:var(--purple);color:white;font-size:12px;font-weight:750}.btn:hover{background:#5938df}.btn.light{background:#f0edff;color:var(--purple)}.btn.ghost{background:white;border:1px solid var(--line);color:var(--muted)}
+.group-list{display:grid;gap:10px}.group{display:flex;align-items:center;gap:12px;border:1px solid var(--line);padding:12px;border-radius:13px}.group-icon{width:39px;height:39px;border-radius:12px;background:#f1edff;display:grid;place-items:center;font-size:18px}.group-info{flex:1;min-width:0}.group-info strong{display:block;font-size:13px}.group-info span{font-size:11px;color:var(--muted)}.group-total{text-align:right;font-size:13px;font-weight:800}.group-total small{display:block;color:var(--muted);font-weight:500;font-size:10px;margin-top:3px}
+.activity{display:grid;gap:0}.activity-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #f1eff5}.activity-row:last-child{border:0}.activity-icon{width:34px;height:34px;border-radius:11px;background:#f5f3fa;display:grid;place-items:center}.activity-info{flex:1;min-width:0}.activity-info strong{font-size:12px;display:block}.activity-info span{font-size:10px;color:var(--muted)}.amount{font-size:12px;font-weight:800}.empty{padding:22px;text-align:center;color:var(--muted);font-size:12px;background:#faf9fd;border-radius:12px}
+.section{display:none}.section.active{display:block}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px}.section-title h2{margin:0;font-size:22px}.section-title p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th{text-align:left;color:#9996a8;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.6px;padding:11px;border-bottom:1px solid var(--line)}td{padding:13px 11px;border-bottom:1px solid #f2f0f6}tr:last-child td{border:0}
+.badge{display:inline-block;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:750;background:#e8f7f1;color:var(--green)}.badge.pending{background:#fff2e4;color:#c47a23}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:750;color:#666477}.field input,.field select{width:100%;border:1px solid #e8e5ef;border-radius:10px;padding:11px 12px;outline:none;background:#fff;color:var(--ink);font-size:13px}.field input:focus,.field select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #eeeaff}.modal-backdrop{position:fixed;inset:0;background:rgba(24,20,42,.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal-backdrop.show{display:flex}.modal{width:min(480px,100%);background:white;border-radius:19px;padding:23px;box-shadow:0 25px 80px #1c163333}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.modal-head h3{margin:0;font-size:18px}.close{border:0;background:#f3f1f8;border-radius:9px;width:32px;height:32px;font-size:18px;color:#777}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.toast{position:fixed;bottom:20px;right:20px;background:#242139;color:white;padding:12px 17px;border-radius:12px;font-size:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.25s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
+.mobile-nav{display:none}
+@media(max-width:1000px){.app{grid-template-columns:205px 1fr}.cards{grid-template-columns:repeat(2,1fr)}main{padding:25px}.content-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.app{display:block}.sidebar{display:none}main{padding:20px 15px 90px}.topbar{margin-bottom:18px}.topbar h1{font-size:22px}.user span:last-child{display:none}.hero{padding:20px;border-radius:17px}.hero h2{font-size:19px}.hero-art{font-size:42px}.cards{gap:9px}.stat{padding:13px}.stat strong{font-size:19px}.stat-top{font-size:10px}.stat-icon{width:28px;height:28px}.panel{padding:15px}.section-title h2{font-size:19px}.mobile-nav{position:fixed;display:flex;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:5}.mobile-nav button{border:0;background:transparent;color:#89869a;font-size:10px;display:grid;gap:3px;justify-items:center;padding:4px 8px}.mobile-nav button.active{color:var(--purple);font-weight:800}.mobile-nav b{font-size:17px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero-art{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">D</div> DIVIDI</div>
+  <div><div class="nav-label">MENU PRINCIPAL</div><nav class="nav">
+    <button class="active" data-page="dashboard"><span class="ico">▦</span> Visão geral</button>
+    <button data-page="groups"><span class="ico">♧</span> Meus grupos</button>
+    <button data-page="expenses"><span class="ico">↗</span> Despesas</button>
+    <button data-page="balances"><span class="ico">◎</span> Acertos</button>
+  </nav></div>
+  <div class="side-tip"><strong>Dividir ficou mais fácil!</strong>Organize os gastos, acompanhe os saldos e mantenha tudo combinado com seu grupo.</div>
+</aside>
+<main>
+  <header class="topbar"><div><div class="eyebrow">SEU ESPAÇO FINANCEIRO</div><h1 id="pageTitle">Visão geral</h1></div><div class="user"><div class="avatar">D</div><span>Olá, pessoa!</span></div></header>
+  <section class="section active" id="dashboard">
+    <div class="hero"><div><h2>Despesas compartilhadas sem confusão.</h2><p>Organize as contas com amigos, família ou quem divide a rotina com você. O DIVIDI faz as contas para você.</p></div><div class="hero-art">💜</div></div>
+    <div class="cards">
+      <div class="stat"><div class="stat-top">Total de despesas <span class="stat-icon">↗</span></div><strong id="totalSpent">R$ 0,00</strong><small>Somatório dos gastos registrados</small></div>
+      <div class="stat"><div class="stat-top">Meus grupos <span class="stat-icon">♧</span></div><strong id="totalGroups">0</strong><small>Grupos cadastrados</small></div>
+      <div class="stat"><div class="stat-top">Tenho a receber <span class="stat-icon">＋</span></div><strong id="toReceive">R$ 0,00</strong><small>Valores a receber de outras pessoas</small></div>
+      <div class="stat"><div class="stat-top">Tenho a pagar <span class="stat-icon">－</span></div><strong id="toPay">R$ 0,00</strong><small>Minha parte das despesas</small></div>
+    </div>
+    <div class="content-grid">
+      <div class="panel"><div class="panel-head"><div><h3>Meus grupos</h3><div class="sub">Acompanhe suas despesas por grupo</div></div><button class="btn light" onclick="openModal('groupModal')">+ Novo grupo</button></div><div id="dashboardGroups" class="group-list"></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>Últimas movimentações</h3><div class="sub">Despesas adicionadas recentemente</div></div></div><div id="recentActivity" class="activity"></div></div>
+    </div>
+  </section>
+  <section class="section" id="groups">
+    <div class="section-title"><div><h2>Meus grupos</h2><p>Organize despesas por casa, viagem, casal ou amigos.</p></div><button class="btn" onclick="openModal('groupModal')">+ Criar grupo</button></div>
+    <div class="panel"><div id="allGroups" class="group-list"></div></div>
+  </section>
+  <section class="section" id="expenses">
+    <div class="section-title"><div><h2>Despesas</h2><p>Registre e acompanhe os gastos compartilhados.</p></div><button class="btn" onclick="openModal('expenseModal')">+ Adicionar despesa</button></div>
+    <div class="panel"><div class="table-wrap"><table><thead><tr><th>Descrição</th><th>Grupo</th><th>Quem pagou</th><th>Valor</th><th>Divisão</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
+  </section>
+  <section class="section" id="balances">
+    <div class="section-title"><div><h2>Acertos</h2><p>Veja uma visão simplificada dos valores por pessoa.</p></div></div>
+    <div class="panel"><div id="balanceContent"></div></div>
+  </section>
+</main>
+<nav class="mobile-nav">
+  <button class="active" data-page="dashboard"><b>▦</b>Início</button>
+  <button data-page="groups"><b>♧</b>Grupos</button>
+  <button data-page="expenses"><b>↗</b>Despesas</button>
+  <button data-page="balances"><b>◎</b>Acertos</button>
+</nav>
+</div>
+
+<div class="modal-backdrop" id="groupModal"><div class="modal">
+  <div class="modal-head"><h3>Criar novo grupo</h3><button class="close" onclick="closeModal('groupModal')">×</button></div>
+  <form id="groupForm"><div class="form-grid">
+    <div class="field full"><label>Nome do grupo</label><input name="name" placeholder="Ex.: Viagem para praia" required maxlength="45"></div>
+    <div class="field full"><label>Participantes (separe por vírgula)</label><input name="people" placeholder="Ex.: Ana, Bruno, Carlos" required></div>
+  </div><div class="modal-actions"><button type="button" class="btn ghost" onclick="closeModal('groupModal')">Cancelar</button><button class="btn">Criar grupo</button></div></form>
+</div></div>
+<div class="modal-backdrop" id="expenseModal"><div class="modal">
+  <div class="modal-head"><h3>Adicionar despesa</h3><button class="close" onclick="closeModal('expenseModal')">×</button></div>
+  <form id="expenseForm"><div class="form-grid">
+    <div class="field full"><label>Descrição</label><input name="description" placeholder="Ex.: Compras do mercado" required maxlength="55"></div>
+    <div class="field"><label>Valor (R$)</label><input name="amount" type="number" min="0.01" step="0.01" placeholder="150,00" required></div>
+    <div class="field"><label>Grupo</label><select name="group" id="expenseGroup" required></select></div>
+    <div class="field"><label>Quem pagou?</label><select name="payer" id="expensePayer" required></select></div>
+    <div class="field"><label>Dividir entre</label><select name="split" id="expenseSplit"><option value="all">Todos do grupo</option><option value="payer">Somente quem pagou</option></select></div>
+  </div><div class="modal-actions"><button type="button" class="btn ghost" onclick="closeModal('expenseModal')">Cancelar</button><button class="btn">Salvar despesa</button></div></form>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+const money = n => Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const starter = {groups:[{id:1,name:'Casa compartilhada',people:['Você','Ana','Bruno']},{id:2,name:'Viagem de fim de semana',people:['Você','Mariana','Lucas','Pedro']}],expenses:[
+{id:1,description:'Compras do mercado',amount:240,payer:'Ana',group:1,split:'all',date:new Date().toISOString()},
+{id:2,description:'Combustível',amount:180,payer:'Você',group:2,split:'all',date:new Date().toISOString()},
+{id:3,description:'Pizza de sexta',amount:96,payer:'Bruno',group:1,split:'all',date:new Date().toISOString()}
+]};
+let data;
+try{data=JSON.parse(localStorage.getItem('dividi-data'))||starter}catch(e){data=starter}
+function save(){localStorage.setItem('dividi-data',JSON.stringify(data));render()}
+function fmtDate(d){return new Date(d).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'})}
+function groupName(id){return data.groups.find(g=>g.id===id)?.name||'Grupo removido'}
+function groupExpenses(g){return data.expenses.filter(e=>e.group===g.id)}
+function groupTotal(g){return groupExpenses(g).reduce((s,e)=>s+e.amount,0)}
+function render(){
+ const total=data.expenses.reduce((s,e)=>s+e.amount,0);
+ document.getElementById('totalSpent').textContent=money(total);
+ document.getElementById('totalGroups').textContent=data.groups.length;
+ // Net position for demo: your share is an equal split; expenses you paid create receivable balance.
+ let net=0;
+ data.expenses.forEach(e=>{let g=data.groups.find(x=>x.id===e.group);if(!g)return;let count=e.split==='payer'?1:g.people.length;let share=e.amount/count;if(e.payer==='Você')net+=e.amount-share;else if(g.people.includes('Você'))net-=share;});
+ document.getElementById('toReceive').textContent=money(Math.max(0,net));
+ document.getElementById('toPay').textContent=money(Math.max(0,-net));
+ const groupHTML=g=>`<div class="group"><div class="group-icon">👥</div><div class="group-info"><strong>${escapeHTML(g.name)}</strong><span>${g.people.length} participantes · ${groupExpenses(g).length} despesas</span></div><div class="group-total">${money(groupTotal(g))}<small>total registrado</small></div></div>`;
+ document.getElementById('dashboardGroups').innerHTML=data.groups.length?data.groups.slice(0,4).map(groupHTML).join(''):'<div class="empty">Você ainda não criou grupos. Clique em “Novo grupo” para começar.</div>';
+ document.getElementById('allGroups').innerHTML=data.groups.length?data.groups.map(groupHTML).join(''):'<div class="empty">Nenhum grupo cadastrado ainda.</div>';
+ const sorted=[...data.expenses].sort((a,b)=>new Date(b.date)-new Date(a.date));
+ document.getElementById('recentActivity').innerHTML=sorted.length?sorted.slice(0,5).map(e=>`<div class="activity-row"><div class="activity-icon">🧾</div><div class="activity-info"><strong>${escapeHTML(e.description)}</strong><span>${escapeHTML(groupName(e.group))} · ${fmtDate(e.date)}</span></div><div class="amount">${money(e.amount)}</div></div>`).join(''):'<div class="empty">Suas movimentações aparecerão aqui.</div>';
+ document.getElementById('expenseRows').innerHTML=sorted.length?sorted.map(e=>`<tr><td><strong>${escapeHTML(e.description)}</strong><br><span class="sub">${fmtDate(e.date)}</span></td><td>${escapeHTML(groupName(e.group))}</td><td>${escapeHTML(e.payer)}</td><td><strong>${money(e.amount)}</strong></td><td><span class="badge">${e.split==='all'?'Todos':'Individual'}</span></td></tr>`).join(''):'<tr><td colspan="5"><div class="empty">Nenhuma despesa registrada.</div></td></tr>';
+ renderBalances();refreshExpenseOptions();
+}
+function renderBalances(){
+ const rows=[];
+ data.groups.forEach(g=>{let bal={};g.people.forEach(p=>bal[p]=0);groupExpenses(g).forEach(e=>{let participants=e.split==='payer'?[e.payer]:g.people;let share=e.amount/participants.length;participants.forEach(p=>{bal[p]=(bal[p]||0)-share});bal[e.payer]=(bal[e.payer]||0)+e.amount});Object.entries(bal).forEach(([person,value])=>rows.push({group:g.name,person,value}))});
+ document.getElementById('balanceContent').innerHTML=rows.length?`<p class="sub" style="margin:0 0 15px">Saldo estimado por participante. Valores positivos indicam que a pessoa tem a receber; negativos indicam que tem a pagar.</p><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Participante</th><th>Saldo</th><th>Situação</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${escapeHTML(r.group)}</td><td>${escapeHTML(r.person)}</td><td><strong style="color:${r.value>=0?'var(--green)':'var(--red)'}">${r.value>=0?'+':''}${money(r.value)}</strong></td><td><span class="badge ${r.value<-.009?'pending':''}">${Math.abs(r.value)<.01?'Equilibrado':r.value>0?'A receber':'A pagar'}</span></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Crie um grupo e registre despesas para visualizar os acertos.</div>';
+}
+function refreshExpenseOptions(){
+ const gsel=document.getElementById('expenseGroup'),psel=document.getElementById('expensePayer');
+ const old=gsel.value;gsel.innerHTML=data.groups.map(g=>`<option value="${g.id}">${escapeHTML(g.name)}</option>`).join('');
+ if(old&&data.groups.some(g=>g.id==old))gsel.value=old;
+ const g=data.groups.find(x=>x.id==gsel.value)||data.groups[0];
+ psel.innerHTML=g?g.people.map(p=>`<option>${escapeHTML(p)}</option>`).join(''):'<option value="">Crie um grupo primeiro</option>';
+}
+document.getElementById('expenseGroup').addEventListener('change',refreshExpenseOptions);
+function openModal(id){if(id==='expenseModal'&&!data.groups.length){notify('Crie um grupo antes de adicionar despesas.');return}refreshExpenseOptions();document.getElementById(id).classList.add('show')}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function notify(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('groupForm').addEventListener('submit',e=>{e.preventDefault();let f=new FormData(e.target);let people=[...new Set(f.get('people').split(',').map(x=>x.trim()).filter(Boolean))];if(!people.length){notify('Adicione pelo menos um participante.');return}if(!people.some(p=>p.toLowerCase()==='você'))people.unshift('Você');data.groups.push({id:Date.now(),name:f.get('name').trim(),people});save();e.target.reset();closeModal('groupModal');notify('Grupo criado com sucesso!')});
+document.getElementById('expenseForm').addEventListener('submit',e=>{e.preventDefault();let f=new FormData(e.target);let amount=Number(f.get('amount'));if(!amount||amount<=0){notify('Informe um valor válido.');return}data.expenses.push({id:Date.now(),description:f.get('description').trim(),amount,payer:f.get('payer'),group:Number(f.get('group')),split:f.get('split'),date:new Date().toISOString()});save();e.target.reset();closeModal('expenseModal');notify('Despesa adicionada!')});
+function showPage(page){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===page));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));let titles={dashboard:'Visão geral',groups:'Meus grupos',expenses:'Despesas',balances:'Acertos'};document.getElementById('pageTitle').textContent=titles[page]}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('.modal-backdrop').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
+render();
+</script>
+</body>
+</html>
