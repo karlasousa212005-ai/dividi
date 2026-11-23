@@ -1,6 +1,6 @@
-# DIVIDI --- Dividir ficou mais fácil!
+# DIVIDI AI --- Dividir ficou mais fácil!
 
-O **DIVIDI** é uma aplicação web para organizar despesas compartilhadas
+O **DIVIDI AI** é uma aplicação web para organizar despesas compartilhadas
 entre amigos, familiares, casais ou pessoas que dividem uma casa, viagem
 ou atividade. O sistema reúne grupos, gastos registrados e saldos
 estimados de cada participante.
@@ -125,7 +125,7 @@ totais e saldos, ordena movimentações, alterna seções e exibe mensagens.
 
 ### localStorage
 
-É um recurso do navegador para guardar informações localmente. O DIVIDI
+É um recurso do navegador para guardar informações localmente. O DIVIDI AI
 utiliza a chave `dividi-data` e armazena os dados em formato JSON. As
 informações permanecem disponíveis no mesmo navegador e perfil, desde
 que os dados do site não sejam apagados.
@@ -139,7 +139,7 @@ ou celulares.
 A versão atual está concentrada em um único arquivo:
 
 ``` text
-DIVIDI/
+DIVIDI AI/
 └── index.html
 ```
 
@@ -150,7 +150,7 @@ funcionalidades dentro da seção `<script>`.
 Em uma evolução, o código poderá ser separado:
 
 ``` text
-DIVIDI/
+DIVIDI AI/
 ├── index.html
 ├── css/
 │   └── style.css
@@ -264,7 +264,7 @@ políticas adequadas de privacidade.
 
 ## 13. Considerações finais
 
-O DIVIDI apresenta uma solução simples para organizar despesas
+O DIVIDI AI apresenta uma solução simples para organizar despesas
 compartilhadas. O protótipo demonstra o fluxo principal: criar grupos,
 registrar gastos, visualizar movimentações e consultar saldos estimados.
 
@@ -275,7 +275,7 @@ colaborativo, com informações sincronizadas entre os participantes.
 
 ------------------------------------------------------------------------
 
-**Projeto:** DIVIDI\
+**Projeto:** DIVIDI AI\
 **Slogan:** Dividir ficou mais fácil!\
 **Tipo:** Aplicação web responsiva --- protótipo acadêmico\
 **Idioma da interface:** Português (Brasil)
